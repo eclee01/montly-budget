@@ -1,0 +1,125 @@
+#include <iostream>
+
+struct Budget {
+    double housing;
+    double utilities, household,
+    transportation, food, medical, insurance,
+    entertainment, clothing, miscellaneous;
+};
+
+void spent(Budget*);
+void budgetSpent(Budget*);
+
+int main() {
+    Budget monthly;
+    Budget *ptr = &monthly;
+    
+    spent(ptr);
+    budgetSpent(ptr);
+    
+    return 0;
+}
+
+void spent(Budget *b) {
+    
+    std::cout << "Enter money spent for...\n";
+    
+    std::cout << "Housing: $";
+    std::cin >> b -> housing;
+    std::cout << "Utilities: $";
+    std::cin >> b -> utilities;
+    std::cout << "Household Expenses: $";
+    std::cin >> b -> household;
+    std::cout << "Transportation: $";
+    std::cin >> b -> transportation;
+    std::cout << "Food: $";
+    std::cin >> b -> food;
+    std::cout << "Medical: $";
+    std::cin >> b -> medical;
+    std::cout << "Insurance: $";
+    std::cin >> b ->insurance;
+    std::cout << "Entertainment: $";
+    std::cin >> b -> entertainment;
+    std::cout << "Clothing: $";
+    std::cin >> b -> clothing;
+    std::cout << "Miscellaneous: $";
+    std::cin >> b -> miscellaneous;
+    
+}
+
+void budgetSpent(Budget *b)
+{
+    double compare, sum, standard;
+    std::cout << "\nFull Monthly Budget Report\n\n";
+    
+    for (int i = 0; i < 10; i++) {
+        switch(i + 1) {
+            case 1 : std::cout << "Housing\n";
+                standard = 500;
+                compare = b -> housing;
+                break;
+            case 2 : std::cout << "Utilities\n";
+                standard = 150;
+                compare = b -> utilities;
+                break;
+            case 3 : std::cout << "Household Expenses\n";
+                standard = 65;
+                compare = b -> household;
+                break;
+            case 4 : std::cout << "Transportation\n";
+                standard = 50;
+                compare = b -> transportation;
+                break;
+            case 5 : std::cout << "Food\n";
+                standard = 250;
+                compare = b -> food;
+                break;
+            case 6 : std::cout << "Medical\n";
+                standard = 30;
+                compare = b -> medical;
+                break;
+            case 7 : std::cout << "Insurance\n";
+                standard = 100;
+                compare = b -> insurance;
+                break;
+            case 8 : std::cout << "Entertainment\n";
+                standard = 150;
+                compare = b -> entertainment;
+                break;
+            case 9 : std::cout << "Clothing\n";
+                standard = 75;
+                compare = b -> clothing;
+                break;
+            case 10 : std::cout << "Miscellaneous\n";
+                standard = 50;
+                compare = b ->miscellaneous;
+                break;
+        }
+        std::cout << "This month: $" << compare << "\n";
+        std::cout << "Budget: $" << standard << "\n";
+        
+        if (compare > standard) {
+            std::cout << "\tOver budget by $" << compare - standard << std::endl;
+        }
+        else if (compare < standard) {
+            std::cout << "\tUnder budget by $" << standard - compare << std::endl;
+        }
+        else {
+            std::cout << "\tOn budget!\n";
+        }
+        
+        sum += compare;
+    }
+    
+    std::cout << "Total amount spent: $" << sum << "\n";
+    
+    if (sum > 1420) {
+        std::cout << "Over budget by $" << sum - 1420 << "\n";
+    }
+    else if (sum < 1420) {
+        std::cout << "Under budget by $" << 1420 - sum << "\n";
+    }
+    else {
+        std::cout << "You were exactly on budget. Congrats\n";
+    }
+}
